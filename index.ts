@@ -5,3 +5,4 @@
 
 import "./api";
 import "./routes/index";
+import "../database/seeders/index";
