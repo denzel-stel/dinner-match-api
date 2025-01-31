@@ -13,6 +13,10 @@ class RecipeController {
     public getAll = async (req: Request, res: Response) => {
         return this.recipeRepository.getAll(req, res);
     }
+
+    getById() {
+
+    }
 }
 
 
