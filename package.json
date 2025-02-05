@@ -13,10 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.4",
+    "drizzle-seed": "^0.3.0",
     "express": "^4.21.2",
-    "faker": "^6.6.6"
+    "faker": "^6.6.6",
+    "stytch": "^12.4.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
