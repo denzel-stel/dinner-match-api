@@ -1,5 +1,4 @@
 import {Request, Response} from "express";
-import {recipesTable} from "../../database/tables/recipes";
 import RecipeRepository from "../repositories/RecipeRepository";
 
 
@@ -10,8 +9,9 @@ class RecipeController {
         this.recipeRepository = new RecipeRepository();
     }
 
-    public getAll = async (req: Request, res: Response) => {
-        return this.recipeRepository.getAll(req, res);
+    public getAll = async (req: Request, res: Response): Promise<void> => {
+        const recipes = await this.recipeRepository.getAll(req, res);
+        res.send(recipes);
     }
 
     getById() {
