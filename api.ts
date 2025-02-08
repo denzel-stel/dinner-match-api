@@ -1,8 +1,8 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
 import 'dotenv/config';
 import { SeedManager } from "../database/seeders";
-
+import { startNgrok } from "./ngrok";
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config();
 
@@ -15,9 +15,13 @@ expressApp.listen(expressPort, () => {
     console.log(`[server]: Server is running at http://localhost:${expressPort}`);
 });
 
+// Run seeders
 const manager = new SeedManager();
 manager.runAllFresh().then(() => {
     console.log('Database reset and seeded successfully!');
 });
+
+// Start ngrok gateway
+startNgrok();
 
 export { expressApp, expressPort};
