@@ -17,6 +17,10 @@ class UserRepository {
         
         return result[0];
     }
+
+    public async create(user: User) {
+        await database.insert(usersTable).values(user);
+    }
 }
 
 export default new UserRepository();

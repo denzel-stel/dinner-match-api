@@ -2,6 +2,8 @@ import {Client} from "stytch";
 import { ClientConfig } from "stytch/types/lib/shared/client";
 
 export default  async function checkAuthenticated(req: any, res: any, next:any)  {
+
+    console.log(JSON.stringify(req.cookies));
     const config: ClientConfig = {
         project_id: process.env.STYTCH_PROJECT_ID || "",
         secret: process.env.STYTCH_SECRET_KEY || ""
