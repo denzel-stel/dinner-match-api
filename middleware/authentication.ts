@@ -1,7 +1,8 @@
+import { NextFunction, Request, Response } from "express";
 import {Client} from "stytch";
 import { ClientConfig } from "stytch/types/lib/shared/client";
 
-export default  async function checkAuthenticated(req: any, res: any, next:any)  {
+export default  async function checkAuthenticated(req: Request, res: Response, next:NextFunction)  {
 
     console.log(JSON.stringify(req.cookies));
     const config: ClientConfig = {
@@ -10,15 +11,20 @@ export default  async function checkAuthenticated(req: any, res: any, next:any) 
     };
     const client = new Client(config);
     try {
-        if (!('session_token' in req.cookies)) {  
-            throw new Error("No session token provided.");
+        if(!("authorization" in req.headers)) {
+            throw new Error("User unauthenticated.")
         }
-        await client.sessions.authenticate({
-            session_token: req.cookies['session_token'] || ''
+        const token = req.headers.authorization;
+        const trimmedToken = token.substring(7);
+        console.log("trimmed token" + trimmedToken.trim())
+        const res = await client.sessions.authenticateJwt({
+            session_jwt: trimmedToken.trim()
         })
+        console.log(res)
         next();
     }
-    catch {
+    catch (e) {
+        console.log("error", e);
         res.status(401).send("User unauthenticated.")
     }
  
