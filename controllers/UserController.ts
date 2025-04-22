@@ -3,7 +3,9 @@ import { Request, Response } from "express";
 
 class UserController {
     async getUserByStytch(req: Request, res: Response): Promise<void> {
+        
         const user = await UserRepository.getByStytchId(req.params.uuid);
+        console.log(user);
         if (user == null) {
             res.status(404).send("User not found");
             return;
@@ -27,7 +29,9 @@ class UserController {
     }
 
     async create(req: Request, res: Response): Promise<void> {
+        console.log('req', req);
         console.log("body" + JSON.stringify(req.body))
+        res.send(null);
         const user = await UserRepository.create(req.body);
         res.send(user);
     }
