@@ -10,10 +10,9 @@ export default  async function checkAuthenticated(req: Request, res: Response, n
         }
         const token = req.headers.authorization;
         const trimmedToken = token.substring(7);
-        const res = await StytchClient.sessions.authenticateJwt({
+        await StytchClient.sessions.authenticate({
             session_jwt: trimmedToken.trim()
         })
-        console.log(res)
         next();
     }
     catch (e) {

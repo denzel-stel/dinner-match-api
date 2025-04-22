@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 class SessionController {
     async getForUser(req: Request, res: Response): Promise<void> {
-        const user = await UserRepository.getById(req.params.userId);
+        const user = await UserRepository.getById(Number(req.params.userId));
         res.send(user);
     }
 

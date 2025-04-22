@@ -3,7 +3,11 @@ import { Request, Response } from "express";
 
 class UserController {
     async getUserByStytch(req: Request, res: Response): Promise<void> {
-        const user = await UserRepository.getByStytchId(req.params.userId);
+        const user = await UserRepository.getByStytchId(req.params.uuid);
+        if (user == null) {
+            res.status(404).send("User not found");
+            return;
+        }
         res.send(user);
     }
 
@@ -14,6 +18,17 @@ class UserController {
 
     async getById(req: Request, res: Response): Promise<void> {
         const user = await UserRepository.getById(Number(req.params.id));
+        
+        if (user ==null) {
+            res.status(404).send("User not found");
+            return;
+        }
+        res.send(user);
+    }
+
+    async create(req: Request, res: Response): Promise<void> {
+        console.log("body" + JSON.stringify(req.body))
+        const user = await UserRepository.create(req.body);
         res.send(user);
     }
 }

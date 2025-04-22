@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { usersTable } from "../../database/tables/users";
 import database from "../database";
 import { User } from "../../database/models/User";
-
+import { User as StytchUser } from "stytch";
 class UserRepository {
 
     public async getById(id: number): Promise<User> {
@@ -12,7 +12,7 @@ class UserRepository {
         .where(eq(usersTable.id, id));
 
         if (result.length === 0) {
-            throw new Error("User not found");
+            return null;
         }
         
         return result[0];
@@ -26,18 +26,29 @@ class UserRepository {
         return await database.select().from(usersTable);
     }
 
-    public async getByStytchId(stytchId: string): Promise<User> {
+    public async getByStytchId(stytchId: string): Promise<User|null> {
         const result =  await database
         .select()
         .from(usersTable)
         .where(eq(usersTable.stytch_uuid, stytchId));
-
+        
         if (result.length === 0) {
-            throw new Error("User not found");
+            return null;
         }
         
         return result[0];
     }
+
+    public async createFromStytchUser(user: StytchUser) {
+        await database.insert(usersTable).values({
+            stytch_uuid: user.user_id,
+            email: user.emails[0].email,
+            username: user.name.first_name,
+            first_name: user.name.first_name,
+            last_name: user.name.last_name,
+        });
+    }
+
 }
 
 export default new UserRepository();
