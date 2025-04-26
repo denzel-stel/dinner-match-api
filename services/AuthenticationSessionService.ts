@@ -52,6 +52,12 @@ class AuthenticationSessionService implements AuthenticationSessionServiceInterf
         return { session, user };
     }
     
+    async invalidateAllSessions(userId: number): Promise<void> {
+        await database.delete(authSessionsTable).where(eq(authSessionsTable.userId, userId));
+    }
+    async invalidateSession(sessionId: string): Promise<void> {
+        await database.delete(authSessionsTable).where(eq(authSessionsTable.id, sessionId));
+    }
 };
 
 export default new AuthenticationSessionService();
