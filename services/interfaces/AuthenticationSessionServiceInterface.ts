@@ -1,5 +1,4 @@
 import { AuthSession } from "../../../database/models/AuthSession";
-import { User } from "../../../database/models/User";
 import { SessionValidationResult } from "../../types/SessionValidationResult";
 
 interface AuthenticationSessionServiceInterface {

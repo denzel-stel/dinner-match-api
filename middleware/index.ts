@@ -5,4 +5,4 @@ import cors from "cors";
 
 expressApp.use(cors())
 expressApp.use(cookieParser());
-expressApp.use(checkAuthenticated);
+expressApp.use('/auth', checkAuthenticated);
