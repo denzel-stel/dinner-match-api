@@ -3,7 +3,6 @@ import StytchClient from "../helpers/StytchClient";
 
 
 export default  async function checkAuthenticated(req: Request, res: Response, next:NextFunction)  {
-
     try {
         if(!("authorization" in req.headers)) {
             throw new Error("User unauthenticated.")

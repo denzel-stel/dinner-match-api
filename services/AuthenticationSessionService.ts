@@ -7,16 +7,18 @@ import { SessionValidationResult } from "../types/SessionValidationResult";
 import { usersTable } from "../../database/tables/users";
 import AuthenticationSessionServiceInterface from "./interfaces/AuthenticationSessionServiceInterface";
 import { eq } from "drizzle-orm";
+import OsloHashService from "./OsloHashService";
 
 class AuthenticationSessionService implements AuthenticationSessionServiceInterface {
+    
     generateSessionToken(): string {
         const bytes = new Uint8Array(20);
         crypto.getRandomValues(bytes);
         const token = encodeBase32LowerCaseNoPadding(bytes);
         return token;
     }
-    async createSession(token: string, userId: number): Promise<AuthSession> {
-        const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+    async createAuthSession(token: string, userId: number): Promise<AuthSession> {
+        const sessionId = OsloHashService.hash(token);
         const session: AuthSession = {
             id: sessionId,
             userId,
@@ -26,7 +28,7 @@ class AuthenticationSessionService implements AuthenticationSessionServiceInterf
         return session;
     }
     async validateSessionToken(token: string): Promise<SessionValidationResult> {
-        const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+        const sessionId = OsloHashService.hash(token);
         const result = await database
             .select({ user: usersTable, session: authSessionsTable })
             .from(authSessionsTable)

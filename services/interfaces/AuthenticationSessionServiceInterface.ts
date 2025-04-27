@@ -4,7 +4,7 @@ import { SessionValidationResult } from "../../types/SessionValidationResult";
 interface AuthenticationSessionServiceInterface {
     generateSessionToken(): string;
 
-    createSession(token: string, userId: number): Promise<AuthSession>;
+    createAuthSession(token: string, userId: number): Promise<AuthSession>;
 
     validateSessionToken(token: string): Promise<SessionValidationResult>;
 
