@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import StytchClient from "../helpers/StytchClient";
+import AuthenticationSessionService from "../services/AuthenticationSessionService";
+import { SessionValidationResult } from "../types/SessionValidationResult";
 
 
 export default  async function checkAuthenticated(req: Request, res: Response, next:NextFunction)  {
@@ -8,10 +9,10 @@ export default  async function checkAuthenticated(req: Request, res: Response, n
             throw new Error("User unauthenticated.")
         }
         const token = req.headers.authorization;
-        const trimmedToken = token.substring(7);
-        await StytchClient.sessions.authenticate({
-            session_jwt: trimmedToken.trim()
-        })
+        const result: SessionValidationResult = await AuthenticationSessionService.validateSessionToken(token);
+        if (result.session === null) {
+            throw new Error("User unauthenticated.")
+        }
         next();
     }
     catch (e) {

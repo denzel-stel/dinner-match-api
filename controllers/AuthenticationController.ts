@@ -47,7 +47,9 @@ class AuthenticationController implements AuthenticationControllerInterface {
       password: OsloHashService.hash(req.body.password),
     };
     const user: User = await database
-    .insert(usersTable).values(newUser).returning()[0];
+                              .insert(usersTable)
+                              .values(newUser)
+                              .returning()[0];
 
     res.status(200).send(user);
   }
