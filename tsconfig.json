@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "module": "Node16",       // Use modern Node.js module resolution
+        "moduleResolution": "Node16",
+        "target": "ES2020",         // Modern JavaScript features
+        "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
+        "allowArbitraryExtensions": true
+      },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules",]
+}

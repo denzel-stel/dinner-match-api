@@ -7,10 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon ./index.ts"
+    "dev": "tsx ./index.ts"
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
@@ -36,7 +37,7 @@
     "drizzle-kit": "^0.30.4",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.7.3"
   }
 }
