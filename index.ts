@@ -4,6 +4,15 @@
  */
 
 // console.log("Hello world!");
+
+// Run database seeders
+import { seedManager } from "dinner-match-database/dist/seeders";
+seedManager.runAllFresh().then(() => {
+    console.log('Database reset and seeded successfully!');
+}).catch((error) => {
+    console.error('Error resetting and seeding database:', error);
+});
+
 // Bootrstrap Express 
 import "./api.ts";
 
@@ -12,6 +21,3 @@ import "./middleware";
 
 // Bootstrap routes
 import "./routes/index.ts";
-
-// Run database seeders
-import "./seeders/index.ts";
