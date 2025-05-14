@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
 import { usersTable } from "dinner-match-database/src/tables/users";
-import database from "../database";
+import database from "dinner-match-database/src/database";
 import AuthenticationSessionService from "../services/AuthenticationSessionService";
 import { SignInRequest } from "../types/requests/SignInRequest";
 import AuthenticationControllerInterface from "./interfaces/AuthenticationControllerInterface";

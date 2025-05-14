@@ -1,7 +1,7 @@
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { AuthSession } from "dinner-match-database/database/models/AuthSession";
 import { authSessionsTable } from "dinner-match-database/tables/auth_sessions";
-import database from "../database.ts";
+import database from "dinner-match-database/src/database.js";
 import { SessionValidationResult } from "../types/SessionValidationResult";
 import { usersTable } from "dinner-match-database/src/tables/users.js";
 import AuthenticationSessionServiceInterface from "./interfaces/AuthenticationSessionServiceInterface";

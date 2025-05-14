@@ -23,6 +23,6 @@
         "../database"
       ]
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "../database/src/database.ts"],
     "exclude": ["node_modules",]
 }

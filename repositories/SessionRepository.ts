@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { sessionMembers } from "dinner-match-database/src/tables/session";
-import database from "../database";
+import database from "dinner-match-database/src/database";
 
 class SessionRepository {
     async joinSession(sessionId: string, userId: number) {
