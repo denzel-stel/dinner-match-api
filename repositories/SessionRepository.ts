@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { sessionMembers } from "../../database/tables/session";
+import { sessionMembers } from "dinner-match-database/src/tables/session";
 import database from "../database";
 
 class SessionRepository {

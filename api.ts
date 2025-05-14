@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import 'dotenv/config';
-import { SeedManager } from "../database/seeders";
+import SeedManager from "#database/src/seeders";
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config();
 
@@ -15,8 +15,8 @@ expressApp.listen(expressPort, () => {
 });
 
 // Run seeders
-const manager = new SeedManager();
-manager.runAllFresh().then(() => {
+
+SeedManager.runAllFresh().then(() => {
     console.log('Database reset and seeded successfully!');
 });
 

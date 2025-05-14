@@ -3,14 +3,15 @@
  * This file imports all the other files in the api directory.
  */
 
+// console.log("Hello world!");
 // Bootrstrap Express 
-import "./api";
+import "./api.ts";
 
 // Register all the middleware;
 import "./middleware";
 
 // Bootstrap routes
-import "./routes/index";
+import "./routes/index.ts";
 
 // Run database seeders
-import "../database/seeders/index";
+import "./seeders/index.ts";
