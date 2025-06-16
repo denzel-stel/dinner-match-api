@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
-import { usersTable } from "dinner-match-database/src/tables/users";
-import database from "dinner-match-database/src/database";
-import { User } from "dinner-match-database/src/models/User";
+import { usersTable } from "dinner-match-database/tables";
+import database from "dinner-match-database/connection";
+import { User } from "dinner-match-database/models";
 import { User as StytchUser } from "stytch";
 class UserRepository {
 

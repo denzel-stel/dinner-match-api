@@ -6,7 +6,7 @@
 // console.log("Hello world!");
 
 // Run database seeders
-import { seedManager } from "dinner-match-database/dist/seeders";
+import { seedManager } from "dinner-match-database/seeders";
 seedManager.runAllFresh().then(() => {
     console.log('Database reset and seeded successfully!');
 }).catch((error) => {

@@ -1,5 +1,5 @@
-import { User } from "dinner-match-database/src/models/User";
-import { AuthSession } from "dinner-match-database/src/models/AuthSession";
+import { User } from "dinner-match-database/models";
+import { AuthSession } from "dinner-match-database/models";
 
 export type SessionValidationResult =
 	| { session: AuthSession; user: User }

@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
+      "target": "ES2020",
+      "module": "ESNext",
+      "moduleResolution": "Bundler", // or NodeNext,
       // Treat files as modules even if it doesn't use import/export
       "moduleDetection": "force",
-
-      // Ignore module structure
-      "module": "Preserve",
 
       // Allow JSON modules to be imported
       "resolveJsonModule": true,
@@ -18,6 +18,6 @@
       // Disallow features that require cross-file awareness
       "isolatedModules": true,
     },
-    "include": ["**/*.ts", "**/*.tsx", "../database/src/database.ts"],
+    "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules",]
 }

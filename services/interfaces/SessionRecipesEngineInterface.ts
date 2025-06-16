@@ -1,6 +1,6 @@
-import { Recipe } from "dinner-match-database/src/models/Recipe";
-import { Session } from "dinner-match-database/src/models/Session";
-import { User } from "dinner-match-database/src/models/User";
+import { Recipe } from "dinner-match-database/models";
+import { Session } from "dinner-match-database/models";
+import { User } from "dinner-match-database/models";
 
 interface SessionRecipesEngineInterface {
     getUnswiped (session: Session, user: User): Recipe[];

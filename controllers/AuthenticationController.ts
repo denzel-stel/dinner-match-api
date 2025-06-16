@@ -1,10 +1,10 @@
 import { and, eq } from "drizzle-orm";
-import { usersTable } from "dinner-match-database/src/tables/users";
-import database from "dinner-match-database/src/database";
+import { usersTable } from "dinner-match-database/tables";
+import database from "dinner-match-database/connection";
 import AuthenticationSessionService from "../services/AuthenticationSessionService";
 import { SignInRequest } from "../types/requests/SignInRequest";
 import AuthenticationControllerInterface from "./interfaces/AuthenticationControllerInterface";
-import { NewUser, User } from "dinner-match-database/src/models/User";
+import { NewUser, User } from "dinner-match-database/models";
 import { Request, Response } from "express";
 import OsloHashService from "../services/OsloHashService";
 import SignUpRequest from "../types/requests/SignUpRequest";
