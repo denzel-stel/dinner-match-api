@@ -1,5 +1,5 @@
-import SessionRepository from "../repositories/SessionRepository";
-import UserRepository from "../repositories/UserRepository";
+import SessionRepository from "dinner-match-database/repositories/SessionRepository";
+import UserRepository from "dinner-match-database/repositories/UserRepository";
 import { Request, Response } from "express";
 
 class SessionController {

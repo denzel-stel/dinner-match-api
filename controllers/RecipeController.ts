@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import RecipeRepository from "../repositories/RecipeRepository";
+import RecipeRepository from "dinner-match-database/repositories/RecipeRepository";
 
 
 class RecipeController {

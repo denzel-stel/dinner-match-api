@@ -1,4 +1,4 @@
-import UserRepository from "../repositories/UserRepository";
+import UserRepository from "dinner-match-database/repositories/UserRepository";
 import { Request, Response } from "express";
 
 class UserController {
@@ -29,10 +29,8 @@ class UserController {
     }
 
     async create(req: Request, res: Response): Promise<void> {
-        console.log("body" + JSON.stringify(req.body))
-        res.send(null);
-        // const user = await UserRepository.create(req.body);
-        // res.send(user);
+        const user = await UserRepository.create(req.body);
+        res.send(user);
     }
 }
 
