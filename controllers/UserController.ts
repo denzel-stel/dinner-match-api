@@ -29,11 +29,10 @@ class UserController {
     }
 
     async create(req: Request, res: Response): Promise<void> {
-        console.log('req', req);
         console.log("body" + JSON.stringify(req.body))
         res.send(null);
-        const user = await UserRepository.create(req.body);
-        res.send(user);
+        // const user = await UserRepository.create(req.body);
+        // res.send(user);
     }
 }
 

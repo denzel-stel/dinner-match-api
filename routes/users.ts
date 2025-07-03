@@ -5,4 +5,4 @@ expressApp.get("/auth/users", UserController.getAll);
 
 expressApp.get("/auth/users/:id", UserController.getById);
 
-expressApp.post("/auth/users", UserController.create);
+expressApp.post("/users", UserController.create);
